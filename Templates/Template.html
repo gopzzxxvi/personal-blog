@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{%block title%}{%endblock%}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oranienbaum&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+        body {
+            background-color: #F7CAC9;
+            color: #fff;
+            margin: 0;
+            font-family: 'Oswald', sans-serif !important;
+        }
+
+        textarea {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        textarea:focus {
+            outline: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .right li {
+            padding: 1rem 2rem;
+            color: #1B0F1C;
+            list-style: none;
+            display: inline-block;
+            transition: all .25s;
+            margin: 0;
+        }
+
+        .right li:hover {
+            background-color: #1B0F1C;
+            color: white;
+            transition: all .25s;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button.but {
+            font-family: 'Oswald', sans-serif !important;
+            background-color: #F7CAC9;
+            border: 2px black solid;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            color: #1B0F1C;
+            font-size: large;
+            transition: all .25s;
+        }
+
+        button:hover {
+            letter-spacing: 1px;
+            background-color: #1B0F1C;
+            color: white;
+            transition: all .25s;
+        }
+
+        .signup {
+            padding-top: 100px;
+            margin-right: 40%;
+            text-align: center;
+            color: #1B0F1C;
+        }
+
+        .signup .prompt {
+            font-size: 45px;
+            margin: 0;
+        }
+
+        .signup label {
+            display: block;
+            font-size: larger;
+        }
+
+        .signup input {
+            display: block;
+            margin: .5rem auto;
+            padding: .5rem 1rem;
+            border-radius: 10px;
+            border: 0;
+            width: 250px;
+            transition: all .25s;
+        }
+
+        .signup input:focus {
+            border: solid #1B0F1C 2px;
+            width: 300px;
+            transition: all .25s;
+            outline: none;
+        }
+
+        .signup button {
+            font-size: medium;
+            margin: .5rem 0;
+            padding: .4rem 2rem;
+        }
+
+        .signup .divide {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .auth::before {
+            position: absolute;
+            z-index: -1;
+            content: "";
+            background: url("http://127.0.0.1:8000/static/Login.png");
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+            transition: all .5s;
+            background-position: bottom right;
+        }
+
+        .divide .sign {
+            margin-top: 25px;
+        }
+
+        .Login {
+            margin-top: 50px;
+        }
+
+        .vl {
+            border-left: 2px solid #1B0F1C;
+            height: 500px;
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: #1B0F1C;
+            padding: 1rem 2rem;
+            background-color: inherit;
+            font-family: inherit;
+            /* Important for vertical align on mobile phones */
+            margin: 0;
+            /* Important for vertical align on mobile phones */
+        }
+
+        /* Add a red background color to navbar links on hover */
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #1B0F1C;
+            color: white;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            float: none;
+            color: #1B0F1C;
+            padding: 1rem 2rem;
+            display: block;
+        }
+
+        /* Add a grey background color to dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #1B0F1C;
+            color: white;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .fixedbutton {
+            position: fixed;
+            display: flex;
+            bottom: 0px;
+            right: 0px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 2rem;
+            background-color: #1B0F1C;
+            color: #F7CAC9;
+            transition: all 0.25s;
+            border-radius: 10px;
+        }
+
+        .fixedbutton:hover {
+            letter-spacing: 2px;
+            transition: all 0.25s;
+            background-color: #F7CAC9;
+            color: #1B0F1C;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        a.none:hover {
+            background-color: #F7CAC9;
+            color: #1B0F1C;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a class="none" href="{%url 'Home'%}">
+            <div class="logo"><span class="material-symbols-outlined">
+                    {%load static%}<img src="{%static 'Logo.png'%}" style="width: 150px;height: 50px;" />
+                </span></div>
+        </a>
+        <div class="right">
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button class="dropbtn">Hello, {{user.get_username}}
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Your Posts</a>
+                    <a href="#">Link 2</a>
+                    <a href={%url 'Signout' %}>Signout</a>
+                </div>
+            </div>
+            {%else%}
+            <a href="{%url 'Signup'%}">
+                <li>Get Started</li>
+            </a>
+            {%endif%}
+            <a href="{%url 'BlogHome'%}">
+                <li>Blog Posts</li>
+            </a>
+        </div>
+    </div>
+    {%block content%}
+    {%endblock%}
+    {%if user.is_authenticated%}
+    <a class="fixedbutton" href="{%url 'CreateBlog'%}"><span class="material-symbols-outlined">add</span>Publish
+        post</a>
+    {%else%}
+    <a class="fixedbutton" href="{%url 'Signup'%}"><span class="material-symbols-outlined">add</span>Log in to create
+        post</a>
+    {%endif%}
+</body>
+
+</html>

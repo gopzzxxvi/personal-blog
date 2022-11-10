@@ -1,0 +1,54 @@
+{%extends 'Template.html'%}
+{%block title%}Create Post{%endblock%}
+{%block content%}
+<style>
+    .card {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        color: #F7CAC9;
+        background-color: #1B0F1C;
+        border-radius: 16px;
+        min-width: 80%;
+        max-width: 80%;
+        margin: 1rem auto;
+        transition: all 0.5s;
+    }
+    input{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+    .card form{
+        display: flex;
+        flex-direction: column;
+    }
+    .card form button{
+        align-self: center;
+    }
+    .card form input{
+        line-height: 2em;
+    }
+
+    button.but{
+        padding: .5rem 2rem;
+        margin-top: 1rem;
+    }
+    button.but:hover{
+        border-radius: 20px;
+        padding: .5rem 2rem;
+        margin-top: 1rem;
+    }
+</style>
+<div class="card">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <label for="Title">Title</label>
+        <input type="text" name="title">
+        <label for="Title" required>Blog Content</label>
+        <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+        <button class="but" type="submit">Create Post</button>
+    </form>
+</div>
+
+{%endblock%}

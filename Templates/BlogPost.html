@@ -1,0 +1,136 @@
+{%extends 'Template.html'%}
+{%block title%}{{Data.Title}}{%endblock%}
+{%block content%}
+<style>
+    body {
+        background-color: #1B0F1C;
+        color: #F7CAC9;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        background-color: #100911;
+        float: right;
+        padding: 1rem;
+        color: #F7CAC9;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        min-width: 80%;
+        max-width: 80%;
+        margin: 1rem;
+        transition: all 0.5s;
+        border-radius: 16px;
+    }
+
+    .card:hover {
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        transition: all 0.5s;
+    }
+
+    .card .title {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .card .date {
+        letter-spacing: 1.5px;
+    }
+
+    button.but {
+        display: block;
+        margin: 0 auto;
+        padding: .5rem 2rem;
+    }
+
+    .cardd {
+        margin: .5rem;
+        padding: .25rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+    }
+
+    .cardd h5 {
+        margin: 0;
+    }
+
+    .main-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .main-wrapper .left {
+        width: 50%;
+    }
+
+    .main-wrapper .right {
+        width: 30%;
+    }
+
+    .fixedbutton {
+        background-color: #F7CAC9;
+        color: #100911;
+    }
+
+    .dropdown .dropbtn {
+        color: #F7CAC9;
+    }
+
+    .right li {
+        color: #F7CAC9;
+    }
+</style>
+<div class="main-wrapper">
+    <div class="left">
+        <div class="card">
+            <div class="title">
+                <h2>{{Data.Title}}</h2>
+                <div class="right" style="display: flex; flex-direction:row;align-content: center;justify-content: flex-end;">
+                    <div class="likes"><a href="http://127.0.0.1:8000/Like/{{Data.ID}}"><span class="material-symbols-outlined" style="margin-right: 5px;">
+                            favorite
+                        </span></a>
+                        <span style="margin-right: 5px;">{{Data.Likes}}</span></div>
+
+                    <a href="#"><span class="material-symbols-outlined">
+                            share
+                        </span></a>
+                </div>
+
+            </div>{{Data.Content|linebreaks}}
+        </div>
+        <div class="comments card">
+            <h2>Comments</h2>
+            <form action="" method="POST">
+                {%csrf_token%}
+                <h4 style="margin: 0;">Add a comment:</h4>
+                <textarea name="comment" id="comment" rows="3" style="width: 100%;"></textarea>
+                <button class="but" type="submit">Add comment</button>
+            </form>
+            {%for i in Comments%}
+            <div class="cardd">
+                <div class="titlee">
+                    <h5>{{i.User_ID}} on {{i.Date_created}}</h5>
+                    <span>{{i.Content}}</span>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    <div class="right">
+        <div class="xd" style="display: flex;">
+            <div class="vl" style="height: 100vh; border-left: 2px solid #F7CAC9;"></div>
+            <div class="xdxd" style="padding:10px; font-size: large;">
+                <div class="title">Author</div>
+                <span class="date">{{Data.user}}</span><br />
+                <span>On {{Data.Date_created}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

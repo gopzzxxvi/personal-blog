@@ -1,0 +1,42 @@
+{%extends 'Template.html'%}
+{%block title%}Authenticate{%endblock%}
+{%block content%}
+<section class="auth">
+    <div class="signup">
+        <div class="divide">
+            <form action="" method="POST">
+                {%csrf_token%}
+                <span class="prompt">Login</span>
+                <div class="Login">
+                    <label for="email">Your username</label>
+                    <input type="text" name="username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                    <button class="but" type="submit">Login</button>
+                </div>
+            </form>
+            <div class="vl"></div>
+            <form action="" method="POST">
+                {%csrf_token%}
+                <span class="prompt">Sign-up</span>
+                <div class="sign">
+                    <label for="email">Your email address</label>
+                    <input type="email" name="email">
+                    <label for="username">Username</label>
+                    <input type="text" name="username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+                    <button class="but" type="submit">Sign Up</button>
+                    <br>
+                    <span>By creating an account you agree to our <u>Terms of Service</u><br>and have read our
+                        <u>Privacy
+                            Policy</u>.</span>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</section>
+
+{%endblock%}

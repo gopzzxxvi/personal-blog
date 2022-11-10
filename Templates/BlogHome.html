@@ -1,0 +1,98 @@
+{%extends 'Template.html'%}
+{%block title%}Blogs{%endblock%}
+{%block content%}
+<style>
+    .wrap {
+        display: flex;
+        max-width: max-content;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        background-color: #F7CAC9;
+        padding: 1rem;
+        border: #1B0F1C 2px solid !important;
+        background: rgba(255, 255, 255, 0.67);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        color: #F7CAC9;
+        background: #1B0F1C;
+        border-radius: 16px;
+        min-width: 500px;
+        max-width: 500px;
+        margin: 1rem 2rem;
+        transition: all 0.25s;
+    }
+
+    .card:hover {
+        background: #F7CAC9;
+        color: #1B0F1C;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: all 0.25s;
+        transform: scale(1.05);
+    }
+
+    .card .title {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card .Content {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    }
+
+    .header{
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+        color: #1B0F1C;
+        font-family: 'Oranienbaum', serif;
+        text-transform: uppercase;
+        font-size: 30px;
+        
+    }
+    .header h1{
+        margin: 0;
+    }
+
+    .header hr{
+        border: #1B0F1C 1px solid;
+    }
+    .icons span{
+        margin: 0 .25rem;
+    }
+</style>
+<div class="header">
+    <h1>Blog Posts</h1>
+    <hr>
+</div>
+
+<div class="wrap">
+    {% for i in Result %}
+    <a href="Blog/{{i.ID}}">
+        <div class="card">
+            <div class="title">
+                <h2>{{i.Title}}</h2>
+                <div class="icons" style="align-self: center;"><span class="material-symbols-outlined">
+                    visibility
+                    </span><span>{{i.views}}</span>
+                    <a href="#"><span class="material-symbols-outlined">share</span></a>
+                </div>
+            </div>
+            
+            <span class="date">By {{i.user}}, on {{i.Date_created}}</span>
+            <p class="Content">{{i.Content}}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{%endblock%}
