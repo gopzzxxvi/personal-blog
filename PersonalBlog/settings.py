@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$gl@w6tm2m8xm7921vmh-30g%)f9z4iy36^qu#^4))64*y4o_l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["blog-challenge.up.railway.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'PersonalBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "railway",
+        "HOST": "containers-us-west-116.railway.app",
+        "PASSWORD" : "CYEEC0clB1p8hiMD34vC",
+        "PORT": "6052",
+        "USER":"root",
+        
     }
 }
 
