@@ -5,3 +5,4 @@ sqlparse==0.4.3
 tzdata==2022.6
 whitenoise==6.2.0
 wincertstore==0.2
+mysqlclient==2.1.1
