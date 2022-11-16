@@ -44,4 +44,7 @@ def Like(request, ID):
     obj.save()
     return redirect("BlogPost", id=ID)
     
-    
+def YourPosts(request):
+    obj = Post.objects.filter(user=request.user)
+    Dict = {"Data": Post.objects.filter(user=request.user)}
+    return render(request, "YourPosts.html", Dict)

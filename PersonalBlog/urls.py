@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from Blog.views import BlogHome, BlogPost, CreateBlog, Like
+from Blog.views import BlogHome, BlogPost, CreateBlog, Like, YourPosts
 from Home.views import HomePage, Signup, Signout
 
 urlpatterns = [
@@ -30,5 +30,6 @@ urlpatterns = [
     path('Blog', BlogHome, name="BlogHome"),
     path('Blog/<slug:id>', BlogPost, name="BlogPost"),
     path('CreateBlog', CreateBlog, name="CreateBlog"),
-    path("Like/<slug:ID>", Like)
+    path("Like/<slug:ID>", Like),
+    path("YourPosts", YourPosts, name="YourPosts"),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
