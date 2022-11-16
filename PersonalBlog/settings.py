@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["https://blog-challenge.up.railway.app", "*"]
 
+CSRF_TRUSTED_ORIGINS = ['https://blog-challenge.up.railway.app']
+
 
 # Application definition
 
